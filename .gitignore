@@ -1,24 +1,25 @@
-# build output
-dist/
+# Dependencies
+node_modules/
+bun.lockb
 
-# generated types
+# Build Outputs
+dist/
 .astro/
 
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# environment variables
+# Environment Variables
 .env
-.env.production
+.env.*
+!.env.example
 
-# macOS-specific files
-.DS_Store
+# Cloudflare
+.wrangler/
+.dev.vars
 
-# jetbrains setting folder
+# IDE & System
+.vscode/
 .idea/
+.DS_Store
+*.log
+
+# Drizzle (Optional: Keep schema, ignore generated migration meta if not using migrations)
+# drizzle/

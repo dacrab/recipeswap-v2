@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import RecipeEditor from '../../../components/RecipeEditor';
+import { db } from '../../../db';
+import { recipes } from '../../../db/schema';
+import { eq, and } from 'drizzle-orm';
+
+const { id } = Astro.params;
+const user = Astro.locals.user;
+
+if (!user) {
+    return Astro.redirect('/login');
+}
+
+if (!id) {
+    return Astro.redirect('/admin');
+}
+
+const [recipe] = await db.select().from(recipes).where(
+    and(
+        eq(recipes.id, id),
+        eq(recipes.userId, user.id)
+    )
+);
+
+if (!recipe) {
+    return Astro.redirect('/admin');
+}
+---
+
+<Layout>
+    <main class="min-h-screen bg-brand-bg">
+        <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-black/5">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <a href="/" class="text-2xl font-serif italic tracking-tighter text-brand-text">RecipeSwap</a>
+                <a href="/admin" class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-brand-text transition-colors">Studio Dashboard</a>
+            </div>
+        </header>
+
+        <div class="pt-20">
+            <RecipeEditor client:load initialData={recipe} isEditing={true} />
+        </div>
+    </main>
+</Layout>
