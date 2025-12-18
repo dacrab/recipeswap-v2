@@ -99,7 +99,7 @@ Visit `http://localhost:4321` to see the app.
 
 This project is configured for **Cloudflare Pages**.
 
-1. Connect your repository to Cloudflare Pages.
+1. Connect your repository to Cloudflare Pages (e.g., `dacrab/recipeswap-v2`).
 2. Set the build command: `bun run build`.
 3. Set the output directory: `dist`.
 4. Add all environment variables from your `.env` to the Cloudflare Pages settings.
