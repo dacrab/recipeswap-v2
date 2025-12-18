@@ -67,12 +67,14 @@ if (activeTab === 'saved') {
                 <a 
                     href="/admin?tab=my-recipes" 
                     class={`pb-4 px-2 text-sm font-bold transition-all border-b-2 ${activeTab === 'my-recipes' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+                    transition:name="tab-my-recipes"
                 >
                     My Recipes
                 </a>
                 <a 
                     href="/admin?tab=saved" 
                     class={`pb-4 px-2 text-sm font-bold transition-all border-b-2 ${activeTab === 'saved' ? 'border-brand-primary text-brand-primary' : 'border-transparent text-gray-400 hover:text-gray-600'}`}
+                    transition:name="tab-saved"
                 >
                     Saved Bookmarks
                 </a>
